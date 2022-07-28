@@ -9,8 +9,8 @@ public interface OrderService {
 
     ResponseOrder createOrder(RequestOrder requestOrder, String userId);
 
-    ResponseOrder getOrderByOrderId(String orderId);
-
     List<ResponseOrder> getOrdersByUserId(String userId);
+
+    ResponseOrder getOrderByOrderId(String orderId);
 
 }

@@ -26,19 +26,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public ResponseOrder getOrderByOrderId(String orderId) {
-        return orderRepository.findByOrderId(orderId)
-                .map(ResponseOrder::of)
-                .orElseThrow(() -> new OrderNotFoundException(""));
-    }
-
-    @Override
     public List<ResponseOrder> getOrdersByUserId(String userId) {
         return IterableUtils
                 .toList(orderRepository.findAll())
                 .stream()
                 .map(ResponseOrder::of)
                 .toList();
+    }
+
+    @Override
+    public ResponseOrder getOrderByOrderId(String orderId) {
+        return orderRepository.findByOrderId(orderId)
+                .map(ResponseOrder::of)
+                .orElseThrow(() -> new OrderNotFoundException(""));
     }
 
 }
